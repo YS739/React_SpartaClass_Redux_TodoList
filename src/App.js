@@ -70,6 +70,7 @@ const App = () => {
 
   const [toDo, setToDo] = useState();
 
+  // input에 입력된 값을 받음
   const onChangeHandler = (e) => {
     const { value } = e.target;
     setToDo(value);
@@ -87,7 +88,7 @@ const App = () => {
       </InputContainer>
       <TodoListContainer>
         <TodoCard>
-          <p>제목</p>
+          <p>{toDo}</p>
         </TodoCard>
       </TodoListContainer>
     </div>

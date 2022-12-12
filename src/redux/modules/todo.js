@@ -2,9 +2,10 @@
 const SHOW_TODO = "SHOW_TODO";
 
 // Action Creator
-export const showTodo = () => {
+export const showTodo = (payload) => {
   return {
     type: SHOW_TODO,
+    payload,
   };
 };
 
@@ -16,7 +17,7 @@ const todo = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_TODO: {
       return {
-        toDoContent: state,
+        toDo: state.todo + action.payload,
       };
     }
     default:
