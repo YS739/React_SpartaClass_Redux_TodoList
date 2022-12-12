@@ -61,19 +61,20 @@ const TodoCard = styled.span`
 `;
 
 const App = () => {
-  const todoStore = useSelector((state) => state);
-  console.log(todoStore);
-
   const dispatch = useDispatch();
+
+  const [todo, setToDo] = useState();
   const toDoContent = useSelector((state) => state.todo);
   console.log(toDoContent);
-
-  const [toDo, setToDo] = useState();
 
   // input에 입력된 값을 받음
   const onChangeHandler = (e) => {
     const { value } = e.target;
     setToDo(value);
+  };
+
+  const onClickAddTodoHandler = () => {
+    dispatch(showTodo(todo));
   };
 
   return (
@@ -84,12 +85,10 @@ const App = () => {
           placeholder="Todo의 제목을 입력하세요"
           onChange={onChangeHandler}
         />
-        <AddBtn onClick={() => dispatch(showTodo())}>추가하기</AddBtn>
+        <AddBtn onClick={onClickAddTodoHandler}>추가하기</AddBtn>
       </InputContainer>
       <TodoListContainer>
-        <TodoCard>
-          <p>{toDo}</p>
-        </TodoCard>
+        <TodoCard>{toDoContent}</TodoCard>
       </TodoListContainer>
     </div>
   );

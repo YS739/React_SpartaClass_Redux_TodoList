@@ -15,11 +15,11 @@ const initialState = "React로 Todo List 만들기";
 // Reducer
 const todo = (state = initialState, action) => {
   switch (action.type) {
-    case SHOW_TODO: {
+    case SHOW_TODO:
       return {
-        toDo: state.todo + action.payload,
+        todo: action.payload,
       };
-    }
+
     default:
       return state;
   }
