@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { showTodo } from "./redux/modules/todo";
@@ -64,9 +65,14 @@ const App = () => {
   console.log(todoStore);
 
   const dispatch = useDispatch();
+  const toDoContent = useSelector((state) => state.todo);
+  console.log(toDoContent);
+
+  const [toDo, setToDo] = useState();
 
   const onChangeHandler = (e) => {
     const { value } = e.target;
+    setToDo(value);
   };
 
   return (
@@ -74,7 +80,6 @@ const App = () => {
       <InputContainer>
         <InputBox
           type="text"
-          value={value}
           placeholder="Todo의 제목을 입력하세요"
           onChange={onChangeHandler}
         />
