@@ -1,7 +1,9 @@
-// Action Value
+import { createStore } from "redux";
+import { combineReducers } from "redux";
 
-// Action Creator
+const rootReducer = combineReducers({
+  todo,
+});
+const store = createStore(rootReducer);
 
-// Reducer
-
-// export
+export default store;
