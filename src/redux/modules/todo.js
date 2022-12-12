@@ -18,6 +18,7 @@ const todoList = (state = initialState, action) => {
     case SHOW_TODO:
       return {
         todoList: action.payload,
+        // state 써야 할 것 같은데..
       };
 
     default:

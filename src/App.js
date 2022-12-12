@@ -62,7 +62,7 @@ const TodoCard = styled.div`
 
 const App = () => {
   const [todoList, setToDo] = useState();
-  const globalTodo = useSelector((state) => state.todoList);
+  const globalTodo = useSelector((state) => state.todoList.todoList);
   console.log(globalTodo);
 
   const dispatch = useDispatch();
@@ -74,6 +74,7 @@ const App = () => {
   };
 
   // 추가하기 버튼
+  console.log(showTodo(todoList));
   const onClickAddTodoHandler = () => {
     dispatch(showTodo(todoList));
   };
