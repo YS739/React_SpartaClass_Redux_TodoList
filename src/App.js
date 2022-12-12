@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { showTodo } from "./redux/modules/todo";
 
 const InputContainer = styled.div`
   width: 95%;
@@ -77,7 +78,7 @@ const App = () => {
           placeholder="Todo의 제목을 입력하세요"
           onChange={onChangeHandler}
         />
-        <AddBtn onClick={() => dispatch({ type: SHOW_TODO })}>추가하기</AddBtn>
+        <AddBtn onClick={() => dispatch(showTodo)}>추가하기</AddBtn>
       </InputContainer>
       <TodoListContainer>
         <TodoCard>
