@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 
 const InputContainer = styled.div`
@@ -61,11 +61,14 @@ const TodoCard = styled.span`
 const App = () => {
   const todoStore = useSelector((state) => state);
   console.log(todoStore);
+
+  const dispatch = useDispatch();
+
   return (
     <div>
       <InputContainer>
         <InputBox type="text" placeholder="Todo의 제목을 입력하세요" />
-        <AddBtn>추가하기</AddBtn>
+        <AddBtn onClick={() => dispatch({ type: SHOW_TODO })}>추가하기</AddBtn>
       </InputContainer>
       <TodoListContainer>
         <TodoCard>
