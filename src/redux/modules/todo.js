@@ -13,11 +13,11 @@ export const showTodo = (payload) => {
 const initialState = "React로 Todo List 만들기";
 
 // Reducer
-const todo = (state = initialState, action) => {
+const todoList = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_TODO:
       return {
-        todo: action.payload,
+        todoList: action.payload,
       };
 
     default:
@@ -25,4 +25,4 @@ const todo = (state = initialState, action) => {
   }
 };
 
-export default todo;
+export default todoList;

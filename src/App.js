@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import { showTodo } from "./redux/modules/todo";
+import todoList, { showTodo } from "./redux/modules/todo";
 
 const InputContainer = styled.div`
   width: 95%;
@@ -47,7 +47,7 @@ const TodoListContainer = styled.div`
   background-color: beige;
 `;
 
-const TodoCard = styled.span`
+const TodoCard = styled.div`
   width: 200px;
   height: 100px;
   display: flex;
@@ -61,11 +61,11 @@ const TodoCard = styled.span`
 `;
 
 const App = () => {
-  const dispatch = useDispatch();
+  const [todoList, setToDo] = useState();
+  const globalTodo = useSelector((state) => state.todoList);
+  console.log(globalTodo);
 
-  const [todo, setToDo] = useState();
-  const toDoContent = useSelector((state) => state.todo);
-  console.log(toDoContent);
+  const dispatch = useDispatch();
 
   // input에 입력된 값을 받음
   const onChangeHandler = (e) => {
@@ -73,8 +73,9 @@ const App = () => {
     setToDo(value);
   };
 
+  // 추가하기 버튼
   const onClickAddTodoHandler = () => {
-    dispatch(showTodo(todo));
+    dispatch(showTodo(todoList));
   };
 
   return (
@@ -88,7 +89,7 @@ const App = () => {
         <AddBtn onClick={onClickAddTodoHandler}>추가하기</AddBtn>
       </InputContainer>
       <TodoListContainer>
-        <TodoCard>{toDoContent}</TodoCard>
+        <TodoCard>{globalTodo}</TodoCard>
       </TodoListContainer>
     </div>
   );
