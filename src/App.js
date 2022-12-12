@@ -64,10 +64,19 @@ const App = () => {
 
   const dispatch = useDispatch();
 
+  const onChangeHandler = (e) => {
+    const { value } = e.target;
+  };
+
   return (
     <div>
       <InputContainer>
-        <InputBox type="text" placeholder="Todo의 제목을 입력하세요" />
+        <InputBox
+          type="text"
+          value={value}
+          placeholder="Todo의 제목을 입력하세요"
+          onChange={onChangeHandler}
+        />
         <AddBtn onClick={() => dispatch({ type: SHOW_TODO })}>추가하기</AddBtn>
       </InputContainer>
       <TodoListContainer>
