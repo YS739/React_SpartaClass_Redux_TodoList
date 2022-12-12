@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const InputBox = styled.div`
@@ -8,6 +9,8 @@ const InputBox = styled.div`
 `;
 
 const App = () => {
+  const todoStore = useSelector((state) => state);
+  console.log(todoStore);
   return (
     <div>
       <InputBox>
