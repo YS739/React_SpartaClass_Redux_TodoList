@@ -11,10 +11,8 @@ export const showTodo = (payload) => {
 
 // Initial State
 const initialState = {
-  todo: [
-    { title: "Redux로 Todo List 만들기", id: 1 },
-    { title: "Redux 숙련 강의 다 듣기", id: 2 },
-  ],
+  todo: "React로 Todo List 만들기",
+  id: 0,
 };
 
 // Reducer
@@ -22,9 +20,10 @@ const todoList = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_TODO:
       return {
-        ...state,
-        todo: [...state.todo, action.payload],
+        todoList: action.payload,
+        // state 써야 할 것 같은데..
       };
+
     default:
       return state;
   }
