@@ -22,10 +22,9 @@ const todoList = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_TODO:
       return {
-        todoList: action.payload,
-        // state 써야 할 것 같은데..
+        ...state,
+        todo: [...state.todo, action.payload],
       };
-
     default:
       return state;
   }
