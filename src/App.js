@@ -70,6 +70,9 @@ const App = () => {
   // input에 입력된 값을 받음
   const onChangeHandler = (e) => {
     const { value } = e.target;
+    if (!{ value }) {
+      return alert("내용을 입력해주세요");
+    }
     setToDo(value);
   };
 
@@ -77,6 +80,7 @@ const App = () => {
   console.log(showTodo(todoList));
   const onClickAddTodoHandler = () => {
     dispatch(showTodo(todoList));
+    setToDo("");
   };
 
   return (

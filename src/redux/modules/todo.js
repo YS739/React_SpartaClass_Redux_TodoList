@@ -10,7 +10,10 @@ export const showTodo = (payload) => {
 };
 
 // Initial State
-const initialState = "React로 Todo List 만들기";
+const initialState = {
+  todo: "React로 Todo List 만들기",
+  id: 0,
+};
 
 // Reducer
 const todoList = (state = initialState, action) => {
