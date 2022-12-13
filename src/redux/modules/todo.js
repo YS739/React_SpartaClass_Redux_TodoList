@@ -11,8 +11,10 @@ export const showTodo = (payload) => {
 
 // Initial State
 const initialState = {
-  todo: "React로 Todo List 만들기",
-  id: 0,
+  todo: [
+    { title: "Redux로 Todo List 만들기", id: 1 },
+    { title: "Redux 숙련 강의 다 듣기", id: 2 },
+  ],
 };
 
 // Reducer
