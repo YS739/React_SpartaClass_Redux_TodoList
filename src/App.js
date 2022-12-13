@@ -67,12 +67,6 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  // input에 입력된 값을 받음
-  const onChangeHandler = (e) => {
-    const { value } = e.target;
-    setTitle(value);
-  };
-
   // todo 추가하기
   const onClickAddTodoHandler = (e) => {
     e.preventDefault();
@@ -84,7 +78,11 @@ const App = () => {
     <div>
       <InputContainer>
         <form onSubmit={onClickAddTodoHandler}>
-          <InputBox type="text" value={title} onChange={onChangeHandler} />
+          <InputBox
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <AddBtn>추가하기</AddBtn>
         </form>
       </InputContainer>
