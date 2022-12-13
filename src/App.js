@@ -61,7 +61,7 @@ const TodoCard = styled.div`
 `;
 
 const App = () => {
-  const [todoList, setToDo] = useState();
+  const [title, setTitle] = useState();
   const globalTodo = useSelector((state) => state.todoList.todo);
   console.log(globalTodo);
 
@@ -70,27 +70,23 @@ const App = () => {
   // input에 입력된 값을 받음
   const onChangeHandler = (e) => {
     const { value } = e.target;
-    if (!{ value }) {
-      return alert("내용을 입력해주세요");
-    }
-    setToDo(value);
+    setTitle(value);
   };
 
-  // 추가하기 버튼
-  const onClickAddTodoHandler = () => {
-    dispatch(showTodo(todoList));
-    setToDo("");
+  // todo 추가하기
+  const onClickAddTodoHandler = (e) => {
+    e.preventDefault();
+    if (!title) return; //공백일 때 dispatch 하지 않음
+    dispatch(showTodo({ id: todoList.length + 1, title }));
   };
 
   return (
     <div>
       <InputContainer>
-        <InputBox
-          type="text"
-          placeholder="Todo의 제목을 입력하세요"
-          onChange={onChangeHandler}
-        />
-        <AddBtn onClick={onClickAddTodoHandler}>추가하기</AddBtn>
+        <form onSubmit={onClickAddTodoHandler}>
+          <InputBox type="text" value={title} onChange={onChangeHandler} />
+          <AddBtn>추가하기</AddBtn>
+        </form>
       </InputContainer>
       <TodoListContainer>
         <TodoCard>{globalTodo}</TodoCard>
