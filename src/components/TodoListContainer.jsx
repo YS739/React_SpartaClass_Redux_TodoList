@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import { useSelector } from "react-redux";
-import todoList from "../redux/modules/todo";
 
 const TodoListContainer = () => {
   const { todo } = useSelector((state) => state.todoList);

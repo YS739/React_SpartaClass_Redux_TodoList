@@ -15,7 +15,7 @@ const AddForm = () => {
   // todo 추가하기
   const onClickAddTodoHandler = (e) => {
     e.preventDefault();
-    if (!title) return; //공백일 때 dispatch 하지 않음
+    if (!title) return alert("제목을 입력해주세요."); //공백일 때 dispatch 하지 않음
     dispatch(showTodo({ id: todoList.length + 1, title }));
   };
 
@@ -25,6 +25,7 @@ const AddForm = () => {
         <InputBox
           type="text"
           value={title}
+          placeholder="Todo 제목을 입력하세요."
           onChange={(e) => setTitle(e.target.value)}
         />
         <AddBtn>추가하기</AddBtn>
