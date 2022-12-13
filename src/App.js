@@ -1,39 +1,7 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import todoList, { showTodo } from "./redux/modules/todo";
 
-const InputContainer = styled.div`
-  width: 95%;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-`;
-
-const InputBox = styled.input`
-  width: 250px;
-  padding: 15px;
-  border: 1px solid plum;
-
-  :hover {
-    border: 2px solid blue;
-  }
-`;
-
-const AddBtn = styled.button`
-  border: none;
-  border-radius: 20px;
-  padding: 10px 15px;
-  margin-left: 20px;
-
-  background-color: black;
-  color: white;
-
-  cursor: pointer;
-`;
+import { useSelector } from "react-redux";
+import AddForm from "./components/AddForm";
 
 const TodoListContainer = styled.div`
   width: 95%;
@@ -61,32 +29,10 @@ const TodoCard = styled.div`
 `;
 
 const App = () => {
-  const [title, setTitle] = useState();
-  const globalTodo = useSelector((state) => state.todoList.todo);
-  console.log(globalTodo);
-  const dispatch = useDispatch();
-
-  // todo 추가하기
-  const onClickAddTodoHandler = (e) => {
-    e.preventDefault();
-    if (!title) return; //공백일 때 dispatch 하지 않음
-    dispatch(showTodo({ id: todoList.length + 1, title }));
-  };
-
-  const { todoList } = useSelector((state) => state.todoList);
-
   return (
     <div>
-      <InputContainer>
-        <form onSubmit={onClickAddTodoHandler}>
-          <InputBox
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <AddBtn>추가하기</AddBtn>
-        </form>
-      </InputContainer>
+      <AddForm />
+
       <TodoListContainer>
         {todoList.map((todos) => (
           <TodoCard key={todos.id}>{todos.title}</TodoCard>
