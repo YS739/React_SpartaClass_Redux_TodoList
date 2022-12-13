@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 import { useSelector } from "react-redux";
+import todoList from "../redux/modules/todo";
 
 const TodoListContainer = () => {
-  const { todoList } = useSelector((state) => state.todoList);
+  const { todo } = useSelector((state) => state.todoList);
+  console.log(todo);
 
   return (
     <TodoBox>
-      {todoList.map((todo) => (
-        <TodoCard key={todo.id}>{todo.title}</TodoCard>
+      {todo.map((todoS) => (
+        <TodoCard key={todoS.id}>{todoS.title}</TodoCard>
       ))}
     </TodoBox>
   );
