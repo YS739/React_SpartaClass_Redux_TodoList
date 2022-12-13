@@ -17,6 +17,7 @@ const AddForm = () => {
     e.preventDefault();
     if (!title) return alert("제목을 입력해주세요."); //공백일 때 dispatch 하지 않음
     dispatch(showTodo({ id: todoList.length + 1, title }));
+    setTitle("");
   };
 
   return (
