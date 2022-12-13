@@ -64,7 +64,6 @@ const App = () => {
   const [title, setTitle] = useState();
   const globalTodo = useSelector((state) => state.todoList.todo);
   console.log(globalTodo);
-
   const dispatch = useDispatch();
 
   // todo 추가하기
@@ -73,6 +72,8 @@ const App = () => {
     if (!title) return; //공백일 때 dispatch 하지 않음
     dispatch(showTodo({ id: todoList.length + 1, title }));
   };
+
+  const { todoList } = useSelector((state) => state.todoList);
 
   return (
     <div>
@@ -87,7 +88,9 @@ const App = () => {
         </form>
       </InputContainer>
       <TodoListContainer>
-        <TodoCard>{globalTodo}</TodoCard>
+        {todoList.map((todos) => (
+          <TodoCard key={todos.id}>{todos.title}</TodoCard>
+        ))}
       </TodoListContainer>
     </div>
   );
